@@ -2,32 +2,33 @@
 
 /**
  * Track files as they're uploaded and remove when they've been saved.
- *
- * @package  unclecheese/silverstripe-dropzone
  */
-class FileAttachmentFieldTrack extends DataObject {
-    private static $db = array(
+class FileAttachmentFieldTrack extends DataObject
+{
+    private static $db = [
         'ControllerClass' => 'Varchar(60)',
         'RecordID' => 'Int',
         'RecordClass' => 'Varchar(60)',
-    );
+    ];
 
-    private static $has_one = array(
+    private static $has_one = [
         'File' => 'File',
-    );
+    ];
 
-    public static function untrack($fileIDs) {
+    public static function untrack($fileIDs)
+    {
         if (!$fileIDs) {
             return;
         }
-        $fileIDs = (array)$fileIDs;
-        $trackRecords = FileAttachmentFieldTrack::get()->filter(array('FileID' => $fileIDs));
+        $fileIDs = (array) $fileIDs;
+        $trackRecords = self::get()->filter(array('FileID' => $fileIDs));
         foreach ($trackRecords as $trackRecord) {
             $trackRecord->delete();
         }
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
         if (!$this->exists()) {
             // Store record this file was tracked on.
@@ -37,11 +38,11 @@ class FileAttachmentFieldTrack extends DataObject {
                 if ($controller->hasMethod('data')) {
                     // Store page visiting on frontend (ContentController)
                     $pageRecord = $controller->data();
-                } else if ($controller->hasMethod('currentPageID')) {
+                } elseif ($controller->hasMethod('currentPageID')) {
                     // Store editing page in CMS (LeftAndMain)
                     $id = $controller->currentPageID();
                     $pageRecord = $controller->getRecord($id);
-                } else if ($controller->hasMethod('getRecord')) {
+                } elseif ($controller->hasMethod('getRecord')) {
                     $pageRecord = $controller->getRecord();
                 }
 
@@ -53,14 +54,16 @@ class FileAttachmentFieldTrack extends DataObject {
         }
     }
 
-    public function setRecord($record) {
+    public function setRecord($record)
+    {
         $this->RecordID = $record->ID;
         $this->RecordClass = $record->ClassName;
     }
 
-    public function Record() {
+    public function Record()
+    {
         if ($this->RecordClass && $this->RecordID) {
-            return DataObject::get_one($this->RecordClass, "ID = ".(int)$this->RecordID);
+            return DataObject::get_one($this->RecordClass, 'ID = '.(int) $this->RecordID);
         }
     }
 }
