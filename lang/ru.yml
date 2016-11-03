@@ -1,9 +1,18 @@
 ru:
   Dropzone:
-    ATTACHFILESHERE_OR: "Прекрепите файлы перетаскиванием в этот блок, или"
-    ATTACHFILEHERE_OF: "Прекрепите файл перетаскиванием в этот блок, или"
-    BROWSEYOURCOMPUTER: "открыть файл с компьютера"
-    UPLOADFILES: "Загрузить файл(ы)"
-    NOTSUPPORTED: "Ваш браузер не поддерживает загрузку файлов HTML5. Пожалуйста обновите."
-    DETACHFILE: "отцепить"
-    MARKFORDELETION: "удалить"
+    YOUCANALSO: 'Или: '
+    OR: 'или'
+    CHOOSEEXISTING: 'выбрать из существующих файлов'
+    BROWSEYOURCOMPUTER: 'откройте файл(ы) с компьютера'
+    ATTACHFILESHERE_OR: 'Прикрепите файлы перетаскиванием в этот блок.'
+    ATTACHFILEHERE_OF: 'Прикрепите файл перетаскиванием в этот блок.'
+    UPLOADFILES: 'Загрузить файл(ы)'
+    NOTSUPPORTED: 'Ваш браузер не поддерживает загрузку файлов HTML5. Пожалуйста обновите.'
+    DETACHFILE: 'отцепить'
+    MARKFORDELETION: 'удалить'
+    ERROR: 'Ошибка!'
+    ADDEDNOW: 'Только что'
+    ADDEDON: 'Добавлено {date}'
+    CHANGEAFTERSAVE: 'Изменения будут внесены после сохранения.'
+    DELETED: 'удалено'
+    REMOVED: 'отцеплено'
